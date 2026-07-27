@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+venv/
+.venv/
+
+# 민감정보 - 혹시 토큰을 파일로 저장하게 되면 여기 추가
+.env
+.env.dev
+*_token.txt
+.auth-token-cache.json
+load-tests/data/users.csv
+
+# Postman
+.postman/
+*.postman_environment.json
+
+# 캐시 / 로그 / 리포트
+pytest-cache-files-*/
+logs/
+reports/
+!reports/.gitkeep
+allure-results
+# 생성물
+.codex_presentations/
+outputs/
+/claude/*
+
+# Allure
+allure-results/
+allure-report/
+
+# Ruff
+.ruff_cache/

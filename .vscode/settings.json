@@ -1,0 +1,33 @@
+{
+  // =========================================================
+  // Allure generated files - Explorer
+  // =========================================================
+  // Allure 결과 및 HTML 리포트 폴더를 파일 탐색기에서 숨깁니다.
+  // 실제 폴더와 파일은 삭제되지 않으며 Allure 실행에도 영향을 주지 않습니다.
+
+  "files.exclude": {
+    "**/allure-results": true,
+    "**/allure-report": true
+  },
+
+  // =========================================================
+  // Allure generated files - Search
+  // =========================================================
+  // VS Code 전체 검색 결과에서 Allure 생성 파일을 제외합니다.
+
+  "search.exclude": {
+    "**/allure-results/**": true,
+    "**/allure-report/**": true
+  },
+
+  // =========================================================
+  // Allure generated files - File watcher
+  // =========================================================
+  // VS Code가 대량으로 생성되는 Allure 파일의 변경을 감시하지 않도록 합니다.
+  // 테스트 실행 중 불필요한 파일 감시와 리소스 사용을 줄입니다.
+
+  "files.watcherExclude": {
+    "**/allure-results/**": true,
+    "**/allure-report/**": true
+  }
+}
