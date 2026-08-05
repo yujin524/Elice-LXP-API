@@ -145,14 +145,7 @@ pipeline {
                             --ignore=tests/api/course_edu \
                             --ignore=tests/api/classroom_edu \
                             --ignore=tests/api/board \
-                            --ignore=tests/api/schedule/positive/test_edit_schedule.py \
-                            --ignore=tests/api/schedule/positive/test_delete_schedule.py \
-                            --ignore=tests/api/schedule/validation/test_edit_schedule.py \
-                            --ignore=tests/api/schedule/validation/test_delete_schedule.py \
-                            --ignore=tests/api/schedule/positive/test_post_schedule.py \
-                            --ignore=tests/api/schedule/authentication/test_post_schedule.py \
-                            --ignore=tests/api/schedule/validation/test_post_schedule.py \
-                            --ignore=tests/api/schedule/scenario/test_schedule_create_read_delete.py
+                            --ignore=tests/api/schedule_edu \
                         status=$?
                         mv reports/api-summary.json reports/api-summary-prod.json
                         exit $status
@@ -201,14 +194,7 @@ pipeline {
                     pytest tests/api/course_edu \
                         tests/api/classroom_edu \
                         tests/api/board \
-                        tests/api/schedule/positive/test_edit_schedule.py \
-                        tests/api/schedule/positive/test_delete_schedule.py \
-                        tests/api/schedule/validation/test_edit_schedule.py \
-                        tests/api/schedule/validation/test_delete_schedule.py \
-                        tests/api/schedule/positive/test_post_schedule.py \
-                        tests/api/schedule/authentication/test_post_schedule.py \
-                        tests/api/schedule/validation/test_post_schedule.py \
-                        tests/api/schedule/scenario/test_schedule_create_read_delete.py \
+                        tests/api/schedule_edu \
                         -o addopts="-v -s -p no:cacheprovider --import-mode=importlib --alluredir=allure-results --tb=short --show-capture=no" \
                         -o log_file=logs/api-tests-dev.log
                 '''
