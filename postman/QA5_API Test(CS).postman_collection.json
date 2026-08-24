@@ -1,0 +1,731 @@
+{
+  "info": {
+    "_postman_id": "e3a4ad2f-7785-4f8d-b77f-6bd5fa43ea48",
+    "name": "QA5_API Test(CS)",
+    "description": "라이브 강의실 입장 기능은 강의실 상세 조회, 입장 처리, 강의실 채널 조회를 통해 검증한다.  \n따라서 lectureroom/get, lectureroom/join, channel 조회 API를 테스트 대상으로 포함하였다.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55819056",
+    "_collection_link": "https://go.postman.co/collection/55819056-e3a4ad2f-7785-4f8d-b77f-6bd5fa43ea48?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "test_schedule",
+      "item": [
+        {
+          "name": "API_CS_001 일정 목록 정상 조회",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "host": true,
+              "user-agent": true,
+              "accept": true,
+              "accept-encoding": true,
+              "connection": true
+            }
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{org}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/schedule?classroom_id={{classroom_id}}&dt_start_ge=2026-06-16T15:00:00.000Z&dt_start_le=2026-08-14T14:59:59.999Z&count=40",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "",
+                "schedule"
+              ],
+              "query": [
+                {
+                  "key": "classroom_id",
+                  "value": "{{classroom_id}}"
+                },
+                {
+                  "key": "dt_start_ge",
+                  "value": "2026-06-16T15:00:00.000Z"
+                },
+                {
+                  "key": "dt_start_le",
+                  "value": "2026-08-14T14:59:59.999Z"
+                },
+                {
+                  "key": "count",
+                  "value": "40"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_002 count=1 최소값 경계 검증",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "host": true,
+              "user-agent": true,
+              "accept": true,
+              "accept-encoding": true,
+              "connection": true
+            }
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{org}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/schedule?classroom_id={{classroom_id}}&dt_start_ge=2026-06-16T15:00:00.000Z&dt_start_le=2026-08-14T14:59:59.999Z&count=40",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "",
+                "schedule"
+              ],
+              "query": [
+                {
+                  "key": "classroom_id",
+                  "value": "{{classroom_id}}"
+                },
+                {
+                  "key": "dt_start_ge",
+                  "value": "2026-06-16T15:00:00.000Z"
+                },
+                {
+                  "key": "dt_start_le",
+                  "value": "2026-08-14T14:59:59.999Z"
+                },
+                {
+                  "key": "count",
+                  "value": "40"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_003 classroom_id 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_004 dt_start_ge 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_005 dt_start_le 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_006 count 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_007 날짜 범위 오류",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_008 Authorization 헤더 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_009 x-elice-org-name-short 헤더 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_010 존재하지 않는 classroom_id",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_011 classroom_id 형식 오류",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "description": "수업 일정 목록 정상 조회"
+    },
+    {
+      "name": "test_schedule_count",
+      "item": [
+        {
+          "name": "API_CS_012 일정 개수 정상 조회",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_013 classroom_id 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_014 날짜 범위 오류",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_015 Authorization 헤더 누락",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{org}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/schedule/count?classroom_id={{classroom_id}}&dt_start_le=2026-08-14T14:59:59.999Z",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schedule",
+                "count"
+              ],
+              "query": [
+                {
+                  "key": "classroom_id",
+                  "value": "{{classroom_id}}"
+                },
+                {
+                  "key": "dt_start_le",
+                  "value": "2026-08-14T14:59:59.999Z"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_016 classroom_id 오류",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "description": "수업 일정 개수 조회"
+    },
+    {
+      "name": "test_schedule_ics",
+      "item": [
+        {
+          "name": "API_CS_017 ICS 파일 정상 조회",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_018 count 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_019 Authorization 헤더 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_020 classroom_id 형식 오류",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{org}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{classroom_base_url}}/schedule/ics?classroom_id=abc123&dt_start_ge=2026-07-01T00:00:00Z&dt_start_le=2026-07-31T23:59:59Z&count=40",
+              "host": [
+                "{{classroom_base_url}}"
+              ],
+              "path": [
+                "schedule",
+                "ics"
+              ],
+              "query": [
+                {
+                  "key": "classroom_id",
+                  "value": "abc123"
+                },
+                {
+                  "key": "dt_start_ge",
+                  "value": "2026-07-01T00:00:00Z"
+                },
+                {
+                  "key": "dt_start_le",
+                  "value": "2026-07-31T23:59:59Z"
+                },
+                {
+                  "key": "count",
+                  "value": "40"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "ICS 파일 정상 조회 (캘린더 파일을 정상적으로 내려주는지 확인)"
+    },
+    {
+      "name": "test_org_{org}_course_lectureroom_get",
+      "item": [
+        {
+          "name": "API_CS_021 강의실 상세 정상 조회",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_022 lectureroom_id 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_023 Authorization 헤더 누락",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "description": "라이브 강의실 입장 기능은 강의실 상세 조회, 입장 처리, 과목 정보 조회를 통해 검증"
+    },
+    {
+      "name": "test_post_schdule",
+      "item": [
+        {
+          "name": "API_CS_024 수업 일정 정상 등록",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{dev_access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{org}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classroom_id\": \"{{classroom_id}}\",\r\n  \"summary\": \"API 테스트 수업 일정\",\r\n  \"dt_start\": \"2026-07-21T22:00:00.000Z\",\r\n  \"dt_end\": \"2026-07-21T23:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_025 x-elice-org-name-short 헤더 누락",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{dev_access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classroom_id\": \"{{dev_classroom_id}}\",\r\n  \"summary\": \"API 테스트 수업 일정\",\r\n  \"dt_start\": \"2026-07-21T22:00:00.000Z\",\r\n  \"dt_end\": \"2026-07-21T23:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_026 classroom_id 누락",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{dev_access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{dev_org}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"summary\": \"API 테스트 수업 일정\",\r\n  \"dt_start\": \"2026-07-21T22:00:00.000Z\",\r\n  \"dt_end\": \"2026-07-21T23:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_027 summary 누락",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{dev_access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{dev_org}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classroom_id\": \"{{dev_classroom_id}}\",\r\n  \"dt_start\": \"2026-07-21T22:00:00.000Z\",\r\n  \"dt_end\": \"2026-07-21T23:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_028 일정 종료 시간 누락",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{dev_access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{dev_org}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classroom_id\": \"{{dev_classroom_id}}\",\r\n  \"summary\": \"API 테스트 수업 일정\",\r\n  \"dt_start\": \"2026-07-21T22:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_029 학습자 토큰으로 교육자 API 호출",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{dev_access_token_le}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{dev_org}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classroom_id\": \"{{dev_classroom_id}}\",\r\n  \"summary\": \"API 테스트 수업 일정\",\r\n  \"dt_start\": \"2026-07-21T22:00:00.000Z\",\r\n  \"dt_end\": \"2026-07-21T23:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "수업 일정 등록"
+    },
+    {
+      "name": "test_schedule_scenario",
+      "item": [
+        {
+          "name": "API_CS_030_1 수업 일정 생성",
+          "request": {
+            "method": "POST",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_030_2 생성 일정 조회",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "API_CS_030_3 생성 일정 삭제",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-elice-org-name-short",
+                "value": "{{dev_org}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classroom_id\": \"{{dev_classroom_id}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_base_url}}/schedule/{{scenario_schedule_id}}",
+              "host": [
+                "{{dev_base_url}}"
+              ],
+              "path": [
+                "schedule",
+                "{{scenario_schedule_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "시나리오: 수업 일정 생성 후 조회 확인\n\n- POST 생성 → GET 조회 → DELETE 삭제"
+    }
+  ]
+}
